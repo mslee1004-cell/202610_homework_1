@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aethelgard Longevity AI — 1-Person Virtual Biotech Engine</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#3b4b3d",
+            "tertiary-fixed": "#e9ddff",
+            "on-error-container": "#ffdad6",
+            "on-primary": "#003919",
+            "on-tertiary": "#3c0091",
+            "on-primary-container": "#007138",
+            "on-primary-fixed-variant": "#005227",
+            "secondary": "#d3fbff",
+            "surface-bright": "#31394a",
+            "surface-dim": "#0a1322",
+            "primary-fixed": "#60ff98",
+            "inverse-on-surface": "#283141",
+            "on-primary-fixed": "#00210c",
+            "primary-fixed-dim": "#00e478",
+            "surface": "#0a1322",
+            "on-surface-variant": "#b9cbb9",
+            "surface-variant": "#2c3545",
+            "surface-container": "#17202f",
+            "on-tertiary-container": "#713fda",
+            "surface-container-low": "#131c2b",
+            "inverse-primary": "#006d36",
+            "on-surface": "#dae2f8",
+            "on-secondary": "#00363a",
+            "error-container": "#93000a",
+            "on-secondary-fixed": "#002022",
+            "surface-container-lowest": "#060e1d",
+            "error": "#ffb4ab",
+            "on-error": "#690005",
+            "on-secondary-container": "#00686f",
+            "outline": "#849585",
+            "on-background": "#dae2f8",
+            "tertiary": "#fff9ff",
+            "tertiary-fixed-dim": "#d0bcff",
+            "surface-container-high": "#222a3a",
+            "secondary-fixed": "#7df4ff",
+            "secondary-container": "#00eefc",
+            "on-secondary-fixed-variant": "#004f54",
+            "primary-container": "#00ff87",
+            "on-tertiary-fixed": "#23005c",
+            "tertiary-container": "#e5d8ff",
+            "inverse-surface": "#dae2f8",
+            "surface-tint": "#00e478",
+            "background": "#0a1322",
+            "on-tertiary-fixed-variant": "#5516be",
+            "surface-container-highest": "#2c3545",
+            "secondary-fixed-dim": "#00dbe9",
+            "primary": "#f1ffef"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "0.5rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-tablet": "0.75rem",
+            "space-xl": "2.5rem",
+            "margin-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "1.25rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-xl": ["Space Grotesk"],
+            "data-display": ["JetBrains Mono"],
+            "headline-md": ["Space Grotesk"],
+            "headline-lg": ["Space Grotesk"],
+            "body-md": ["Inter"],
+            "label-lg": ["JetBrains Mono"],
+            "body-lg": ["Inter"],
+            "headline-xl-mobile": ["Space Grotesk"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-sm": ["Space Grotesk"],
+            "label-sm": ["JetBrains Mono"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "data-display": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.03em", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "label-lg": ["13px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "label-md": ["11px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .custom-grid-pattern {
+      background-size: 28px 28px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 240, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.035) 1px, transparent 1px);
+    }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.25; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.04); }
+    }
+    .pulse-glow {
+      animation: pulse-slow 4s infinite ease-in-out;
+    }
+    @keyframes orbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .orbit-spin {
+      animation: orbit 24s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface custom-grid-pattern min-h-screen antialiased selection:bg-primary-container selection:text-surface-container-lowest overflow-x-hidden">
+<!-- TOPNAV BAR (SHARED COMPONENT ANCHOR) -->
+<header class="bg-surface-container-lowest/80 backdrop-blur-md dark:bg-surface-container-lowest/80 docked full-width top-0 z-50 shadow-[0_4px_24px_-4px_rgba(0,0,0,0.7)] flex justify-between items-center w-full px-6 py-3 border-b border-outline-variant/30 sticky top-0">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-2xl drop-shadow-[0_0_12px_rgba(0,255,135,0.8)]" data-icon="hub">hub</span>
+<span class="font-headline-md text-headline-md text-primary tracking-tight font-bold drop-shadow-[0_0_12px_rgba(0,255,135,0.4)]">Aethelgard AI</span>
+</div>
+<div class="hidden xl:flex items-center gap-2 px-3 py-1 rounded bg-surface-container-high/60 border border-outline-variant/40">
+<span class="h-2 w-2 rounded-full bg-primary-container animate-ping"></span>
+<span class="font-label-md text-label-md text-secondary-fixed">DeepMind Science Skills: 40 Loaded</span>
+<span class="text-outline text-xs">|</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">AF3 • RFdiffusion • ESM-3 • DiffDock</span>
+</div>
+</div>
+<!-- SHARED NAVIGATION LINKS -->
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-primary-container border-b-2 border-primary-container font-headline-sm pb-1" href="#telemetry">Telemetry</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-sm pb-1 hover:border-secondary-container hover:text-secondary-fixed" href="#structural-lab">Structural Lab</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-sm pb-1 hover:border-secondary-container hover:text-secondary-fixed" href="#pipeline-matrix">Pipeline Matrix</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-sm pb-1 hover:border-secondary-container hover:text-secondary-fixed" href="#in-silico">In Silico Trials</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-headline-sm pb-1 hover:border-secondary-container hover:text-secondary-fixed" href="#financial-ops">Financial Ops</a>
+</nav>
+<!-- TRAILING ACTIONS & PROFILES -->
+<div class="flex items-center gap-3">
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant">
+<button class="p-2 rounded bg-surface-container hover:text-secondary-fixed hover:bg-surface-container-high transition-all" title="Quantum Cloud Core">
+<span class="material-symbols-outlined text-lg" data-icon="memory">memory</span>
+</button>
+<button class="p-2 rounded bg-surface-container hover:text-secondary-fixed hover:bg-surface-container-high transition-all relative" title="Notifications">
+<span class="material-symbols-outlined text-lg" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+</button>
+</div>
+<button class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-secondary-container border border-secondary-container/40 hover:bg-secondary-container/10 font-headline-sm text-body-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-sm" data-icon="view_in_ar">view_in_ar</span>
+<span>Simulate Re-fold</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-1.5 rounded font-headline-sm text-body-sm bg-primary-container text-surface-container-lowest font-bold shadow-[0_0_16px_rgba(0,255,135,0.4)] hover:shadow-[0_0_24px_rgba(0,255,135,0.65)] transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base font-bold" data-icon="biotech">biotech</span>
+<span>Synthesize</span>
+</button>
+<div class="flex items-center gap-2 pl-3 border-l border-outline-variant/40">
+<div class="w-8 h-8 rounded border border-primary-container/60 bg-surface-container-high flex items-center justify-center relative overflow-hidden group cursor-pointer" title="Solo Principal Investigator Biometric Badge">
+<span class="material-symbols-outlined text-primary-container text-lg" data-icon="fingerprint">fingerprint</span>
+<div class="absolute inset-0 bg-primary-container/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- SECONDARY HORIZONTAL TELEMETRY STRIP -->
+<section class="w-full bg-surface-container-low/70 border-b border-outline-variant/30 px-6 py-2">
+<div class="max-w-[1720px] mx-auto flex flex-wrap items-center justify-between gap-4 font-label-md text-label-md">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="text-on-surface-variant">Cluster Compute:</span>
+<span class="text-primary font-bold">84.2 TFLOPs/s</span>
+</div>
+<div class="hidden sm:flex items-center gap-2">
+<span class="text-outline">/</span>
+<span class="text-on-surface-variant">Quantum Pipeline:</span>
+<span class="text-secondary-fixed">ACTIVE (Q-VQE Docking)</span>
+</div>
+<div class="hidden md:flex items-center gap-2">
+<span class="text-outline">/</span>
+<span class="text-on-surface-variant">Roundtrip Latency:</span>
+<span class="text-primary-container">12ms</span>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="cloud_sync">cloud_sync</span>
+<span>Wet-Labs Synced: <strong class="text-on-surface">6/6 Cloud APIs</strong></span>
+</div>
+<div class="hidden lg:flex items-center gap-2 text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container-highest/60 text-secondary-fixed">
+<span>Strateos</span> • <span>Emerald Lab</span> • <span>Arctoris</span>
+</div>
+</div>
+</div>
+</section>
+<!-- MAIN WRAPPER CONTAINER -->
+<main class="max-w-[1720px] mx-auto px-4 md:px-6 py-6 space-y-6">
+<!-- HERO DOCKING & PRECLINICAL STATS BANNER -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Metric 1 -->
+<div class="p-4 rounded-xl bg-surface-container-low/80 backdrop-blur-xl border border-secondary-container/20 hover:border-secondary-container/50 transition-all shadow-[0_0_20px_-4px_rgba(0,255,135,0.06)] relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-secondary-container/5 rounded-full blur-xl group-hover:bg-secondary-container/15 transition-all"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-secondary-fixed tracking-wider">VELOCITY METRIC</span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container/15 text-primary-container border border-primary-container/30">-98.2% FAST</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">21 Days</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Preclinical Cycle Time (vs 4.5 yr Industry Avg)</div>
+<div class="mt-3 w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[96%]"></div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-4 rounded-xl bg-surface-container-low/80 backdrop-blur-xl border border-primary-container/25 hover:border-primary-container/50 transition-all shadow-[0_0_20px_-4px_rgba(0,255,135,0.08)] relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-primary-container/5 rounded-full blur-xl group-hover:bg-primary-container/15 transition-all"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-primary-container tracking-wider">AFFINITY CONSTANT</span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-secondary-container/15 text-secondary-container border border-secondary-container/30">ULTRAPOTENT</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-secondary-fixed font-bold tracking-tight">0.42 nM <span class="text-sm font-normal text-on-surface-variant font-label-md">KD</span></div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Target: FOXO4-p53 &amp; Senolytic BCL-xL</div>
+<div class="mt-3 flex items-center gap-1.5 font-label-sm text-label-sm text-primary-container">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+<span>Dual Disruptor Selectivity: 99.4%</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-4 rounded-xl bg-surface-container-low/80 backdrop-blur-xl border border-secondary-container/20 hover:border-secondary-container/50 transition-all shadow-[0_0_20px_-4px_rgba(0,255,135,0.06)] relative overflow-hidden group">
+<div class="absolute -right-6 -bottom-6 w-24 h-24 bg-secondary-container/5 rounded-full blur-xl group-hover:bg-secondary-container/15 transition-all"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-secondary-fixed tracking-wider">IN-SILICO VALUATION</span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-surface-container-high text-tertiary-fixed border border-tertiary-fixed/30">PRE-IND</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">$184M</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Phase I Out-Licensing Package NPV</div>
+<div class="mt-3 flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Solo Cap Retained: <strong class="text-primary-container">92.5%</strong></span>
+<span>14.5% Royalty</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-4 rounded-xl bg-surface-container-low/80 backdrop-blur-xl border border-outline-variant/40 hover:border-secondary-container/40 transition-all shadow-[0_0_20px_-4px_rgba(0,255,135,0.06)] relative overflow-hidden group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider">ROBOTIC WET-LABS</span>
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">6 APIs Synced</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Autonomous Execution Queue Active</div>
+<div class="mt-3 flex items-center gap-2">
+<button class="w-full py-1 rounded bg-surface-container-high hover:bg-surface-container-highest text-secondary-fixed text-label-sm font-label-sm border border-outline-variant/50 transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="terminal">terminal</span>
+<span>Trigger Remote Assay</span>
+</button>
+</div>
+</div>
+</section>
+<!-- MAIN BENTO WORKSPACE GRID -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT COLUMN: CELLULAR & ALPHAFOLD VISUALIZERS (7 COLS) -->
+<div class="lg:col-span-7 space-y-6">
+<!-- 1. CELLULAR SENESCENCE & SASP MICROENVIRONMENT VISUALIZER -->
+<div class="rounded-xl bg-surface-container-low/85 backdrop-blur-2xl border border-secondary-container/25 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] relative overflow-hidden">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4 border-b border-outline-variant/30 pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="biotech">biotech</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">Cellular Microenvironment • Senescence Clearance Visualizer</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container/10 border border-primary-container/30 text-primary-container">Live Simulation • 48kHz</span>
+<button class="text-on-surface-variant hover:text-secondary-fixed">
+<span class="material-symbols-outlined text-sm" data-icon="fullscreen">fullscreen</span>
+</button>
+</div>
+</div>
+<!-- CELL STAGE SVG INTERACTIVE CANVAS -->
+<div class="relative w-full h-[330px] rounded-lg bg-surface-container-lowest/90 border border-outline-variant/40 flex items-center justify-center overflow-hidden">
+<!-- Background Radial Glows -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-80 h-80 rounded-full bg-secondary-container/10 blur-3xl pulse-glow"></div>
+<div class="w-48 h-48 rounded-full bg-primary-container/15 blur-2xl"></div>
+</div>
+<!-- SVG Scientific Cellular Scene -->
+<svg class="w-full h-full" fill="none" viewbox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+<!-- SASP Cytokine Dispersion Cloud -->
+<g class="orbit-spin" opacity="0.35" style="transform-origin: 340px 160px;">
+<circle cx="200" cy="100" fill="#00eefc" r="4"></circle>
+<circle cx="480" cy="220" fill="#00ff87" r="5"></circle>
+<circle cx="450" cy="90" fill="#e5d8ff" r="3"></circle>
+<circle cx="210" cy="240" fill="#00eefc" r="4.5"></circle>
+<circle cx="340" cy="40" fill="#00ff87" r="6"></circle>
+<circle cx="340" cy="280" fill="#e5d8ff" r="3.5"></circle>
+<line opacity="0.4" stroke="#00eefc" stroke-dasharray="2 3" stroke-width="0.75" x1="200" x2="340" y1="100" y2="160"></line>
+<line opacity="0.4" stroke="#00ff87" stroke-dasharray="2 3" stroke-width="0.75" x1="480" x2="340" y1="220" y2="160"></line>
+<line opacity="0.4" stroke="#e5d8ff" stroke-dasharray="2 3" stroke-width="0.75" x1="450" x2="340" y1="90" y2="160"></line>
+</g>
+<!-- Outer Cellular Membrane -->
+<ellipse cx="340" cy="160" opacity="0.6" rx="220" ry="120" stroke="#00eefc" stroke-dasharray="8 4" stroke-width="1.8"></ellipse>
+<ellipse cx="340" cy="160" opacity="0.3" rx="214" ry="114" stroke="#00ff87" stroke-width="0.8"></ellipse>
+<!-- Dysregulated Mitochondria -->
+<g transform="translate(180, 130)">
+<ellipse cx="25" cy="18" fill="#17202f" opacity="0.85" rx="26" ry="14" stroke="#ffb4ab" stroke-width="1.4"></ellipse>
+<path d="M10 18 Q 18 10, 25 18 T 40 18" fill="none" stroke="#ffdad6" stroke-width="1.2"></path>
+<circle cx="25" cy="18" fill="#00ff87" r="1.5"></circle>
+</g>
+<g transform="translate(420, 160)">
+<ellipse cx="20" cy="15" fill="#17202f" opacity="0.8" rx="22" ry="12" stroke="#ffb4ab" stroke-width="1.2"></ellipse>
+<path d="M7 15 Q 15 8, 22 15 T 33 15" fill="none" stroke="#ffdad6" stroke-width="1"></path>
+</g>
+<!-- Senescent Core Nucleus (p16 / p21) -->
+<ellipse cx="340" cy="160" fill="#0c1a30" rx="90" ry="55" stroke="#00ff87" stroke-width="2"></ellipse>
+<ellipse cx="340" cy="160" opacity="0.8" rx="75" ry="42" stroke="#00eefc" stroke-dasharray="4 3" stroke-width="1"></ellipse>
+<!-- Chromatin / Nuclear DNA loops -->
+<path d="M300 155 C 310 135, 330 180, 345 150 S 375 165, 385 155" fill="none" stroke="#60ff98" stroke-width="2"></path>
+<path d="M315 170 C 330 150, 350 175, 365 160" fill="none" opacity="0.7" stroke="#7df4ff" stroke-width="1.5"></path>
+<!-- Target Interrupter Drug Molecule AETH-408 In Docking Trajectory -->
+<g transform="translate(325, 142)">
+<circle class="animate-pulse" cx="15" cy="15" fill="#00ff87" opacity="0.25" r="8"></circle>
+<polygon fill="#00ff87" points="15,7 23,20 7,20"></polygon>
+<circle cx="15" cy="15" fill="#050b14" r="3"></circle>
+</g>
+<!-- SASP Cytokine Emitters -->
+<circle class="animate-ping" cx="210" cy="85" fill="#00eefc" r="3"></circle>
+<circle class="animate-ping" cx="475" cy="115" fill="#00ff87" r="3"></circle>
+<circle class="animate-ping" cx="490" cy="195" fill="#e5d8ff" r="2.5"></circle>
+</svg>
+<!-- Interactive Hotspot Node Callouts -->
+<div class="absolute top-4 left-4 max-w-[210px] p-2.5 rounded bg-surface-container-high/90 border border-outline-variant/60 backdrop-blur-md">
+<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-secondary-fixed">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>NODE 01: Core Target</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface font-semibold mt-0.5">Senescent Nucleus</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">p16INK4a &amp; p21CIP1 locus. Interrupted via FOXO4-p53 peptide mimic.</p>
+</div>
+<div class="absolute bottom-4 left-4 max-w-[220px] p-2.5 rounded bg-surface-container-high/90 border border-outline-variant/60 backdrop-blur-md">
+<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-error">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span>NODE 02: mtROS Spike</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface font-semibold mt-0.5">Mitochondrial Crisis</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">mtDNA release: +340% baseline. Apoptosis pathway priming confirmed.</p>
+</div>
+<div class="absolute top-4 right-4 max-w-[210px] p-2.5 rounded bg-surface-container-high/90 border border-outline-variant/60 backdrop-blur-md">
+<div class="flex items-center gap-1.5 text-label-sm font-label-sm text-primary-container">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span>NODE 03: SASP Flare</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface font-semibold mt-0.5">Paracrine Firestorm</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Neutralization of IL-6, IL-8, MMP-3. Zero bystander senescence.</p>
+</div>
+</div>
+<!-- Bottom Telemetry Live Bar -->
+<div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 font-label-md text-label-md">
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30">
+<div class="text-on-surface-variant text-label-sm">Burden Index</div>
+<div class="text-primary-container font-headline-sm font-bold mt-0.5">-78.4%</div>
+<div class="text-label-sm text-on-surface-variant">Post-AETH408 Dose</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30">
+<div class="text-on-surface-variant text-label-sm">NF-κB Inhibition</div>
+<div class="text-secondary-fixed font-headline-sm font-bold mt-0.5">94.2%</div>
+<div class="text-label-sm text-on-surface-variant">Translocation Block</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30">
+<div class="text-on-surface-variant text-label-sm">Caspase-3/9 Flush</div>
+<div class="text-primary font-headline-sm font-bold mt-0.5">Selective</div>
+<div class="text-label-sm text-on-surface-variant">Fibroblast Spared</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30">
+<div class="text-on-surface-variant text-label-sm">Cell Viability</div>
+<div class="text-primary-container font-headline-sm font-bold mt-0.5">99.1%</div>
+<div class="text-label-sm text-on-surface-variant">Healthy Control</div>
+</div>
+</div>
+</div>
+<!-- 2. ALPHAFOLD 3D BINDING POCKET WITH RESIDUE TAGS -->
+<div class="rounded-xl bg-surface-container-low/85 backdrop-blur-2xl border border-primary-container/25 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] relative overflow-hidden">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="view_in_ar">view_in_ar</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">AlphaFold 3 • In-Silico Ligand-Target Docking Pocket</h2>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-label-md text-label-md text-on-surface-variant">Target: <span class="text-secondary-fixed font-bold">FOXO4-DBD // p53-TAD</span></span>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-secondary-container/10 border border-secondary-container/30 text-secondary-container">GPU RMSD 0.62 Å</span>
+</div>
+</div>
+<!-- Molecular Wireframe & Pocket Cavity Render Canvas -->
+<div class="relative w-full h-[280px] rounded-lg bg-surface-container-lowest border border-outline-variant/40 overflow-hidden flex items-center justify-center">
+<!-- Simulated Depth Field -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-surface-container-lowest pointer-events-none z-10"></div>
+<svg class="w-full h-full" fill="none" viewbox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
+<!-- Protein Ribbon Wireframe Backbone -->
+<path d="M 40,210 C 90,140 130,230 190,170 S 260,70 320,130 S 390,210 460,110 S 540,160 590,80" fill="none" stroke="#17202f" stroke-linecap="round" stroke-width="12"></path>
+<path d="M 40,210 C 90,140 130,230 190,170 S 260,70 320,130 S 390,210 460,110 S 540,160 590,80" fill="none" stroke="#222a3a" stroke-linecap="round" stroke-width="4"></path>
+<!-- Binding Cavity Glowing Iso-surface -->
+<ellipse cx="310" cy="130" fill="#00ff87" opacity="0.08" rx="100" ry="60"></ellipse>
+<path d="M 230,135 Q 310,80 390,135 T 310,185 Z" fill="#00eefc" opacity="0.12" stroke="#00eefc" stroke-dasharray="3 3" stroke-width="1"></path>
+<!-- Lead Ligand Skeleton (AETH-408) -->
+<g stroke="#00ff87" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5">
+<!-- Core Heterocycle -->
+<line x1="285" x2="305" y1="130" y2="115"></line>
+<line x1="305" x2="330" y1="115" y2="125"></line>
+<line x1="330" x2="335" y1="125" y2="150"></line>
+<line x1="335" x2="315" y1="150" y2="160"></line>
+<line x1="315" x2="285" y1="160" y2="130"></line>
+<!-- Peripheral Functional Pharmacophores -->
+<line stroke="#7df4ff" stroke-width="1.8" x1="305" x2="300" y1="115" y2="90"></line>
+<line stroke="#7df4ff" stroke-width="1.8" x1="335" x2="360" y1="150" y2="165"></line>
+<circle cx="300" cy="90" fill="#7df4ff" r="3.5"></circle>
+<circle cx="360" cy="165" fill="#00ff87" r="3.5"></circle>
+<circle cx="285" cy="130" fill="#f1ffef" r="3"></circle>
+</g>
+<!-- Docking Interaction Vectors -->
+<!-- Asp32 Salt Bridge -->
+<line stroke="#ffb4ab" stroke-dasharray="3 2" stroke-width="1.5" x1="250" x2="285" y1="85" y2="130"></line>
+<!-- Trp76 Pi-Pi Stacking -->
+<line stroke="#00eefc" stroke-dasharray="3 2" stroke-width="1.5" x1="380" x2="330" y1="100" y2="125"></line>
+<!-- Thr72 Hydrogen Bond -->
+<line stroke="#60ff98" stroke-dasharray="3 2" stroke-width="1.5" x1="300" x2="270" y1="90" y2="60"></line>
+<!-- Phe108 Anchor -->
+<line stroke="#e5d8ff" stroke-dasharray="3 2" stroke-width="1.5" x1="360" x2="400" y1="165" y2="190"></line>
+</svg>
+<!-- Molecular Residue Callout Badges -->
+<div class="absolute top-4 left-6 px-2.5 py-1 rounded bg-surface-container-high/90 border border-secondary-container/40 font-label-md text-label-md shadow-md">
+<span class="text-secondary-fixed font-bold">Asp32</span> • <span class="text-on-surface-variant">Salt Bridge (-4.2 kcal/mol)</span>
+</div>
+<div class="absolute top-4 right-10 px-2.5 py-1 rounded bg-surface-container-high/90 border border-primary-container/40 font-label-md text-label-md shadow-md">
+<span class="text-primary-container font-bold">Trp76</span> • <span class="text-on-surface-variant">π-π Stacking (3.4 Å)</span>
+</div>
+<div class="absolute bottom-4 left-12 px-2.5 py-1 rounded bg-surface-container-high/90 border border-outline-variant/60 font-label-md text-label-md shadow-md">
+<span class="text-primary font-bold">Thr72</span> • <span class="text-on-surface-variant">H-Bond Donor (2.1 Å)</span>
+</div>
+<div class="absolute bottom-4 right-8 px-2.5 py-1 rounded bg-surface-container-high/90 border border-outline-variant/60 font-label-md text-label-md shadow-md">
+<span class="text-tertiary-fixed font-bold">Phe108</span> • <span class="text-on-surface-variant">Hydrophobic Cavity Anchor</span>
+</div>
+</div>
+<!-- Docking Telemetry Footer -->
+<div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-label-md font-label-md bg-surface-container px-4 py-2.5 rounded border border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant">Vina Autodock GPU Score:</span>
+<span class="text-primary-container font-bold text-headline-sm">-13.8 kcal/mol</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant">Conformational RMSD:</span>
+<span class="text-secondary-fixed font-bold">0.62 Å</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant">Pocket Selectivity:</span>
+<span class="text-primary-fixed font-bold">99.4% (vs p53-MDM2)</span>
+</div>
+<button class="px-3 py-1 rounded bg-surface-container-high hover:bg-surface-container-highest text-secondary-fixed border border-secondary-container/30 transition-all">
+              Export PDB Coordinates
+            </button>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: ADMET RADAR & 1-PERSON UNICORN ECONOMICS (5 COLS) -->
+<div class="lg:col-span-5 space-y-6">
+<!-- 3. ADMET LIPINSKI RULE OF 5 6-AXIS RADAR -->
+<div class="rounded-xl bg-surface-container-low/85 backdrop-blur-2xl border border-secondary-container/25 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="radar">radar</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">ADMET Profiler • 6-Axis Radar</h2>
+</div>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container/15 text-primary-container border border-primary-container/30">0 Lipinski Violations</span>
+</div>
+<!-- Radar SVG Canvas -->
+<div class="relative w-full h-[260px] flex items-center justify-center">
+<svg class="w-full h-full" fill="none" viewbox="0 0 320 260" xmlns="http://www.w3.org/2000/svg">
+<!-- Radial Grid Rings -->
+<circle cx="160" cy="130" r="100" stroke="#222a3a" stroke-dasharray="3 3" stroke-width="1"></circle>
+<circle cx="160" cy="130" r="70" stroke="#222a3a" stroke-dasharray="3 3" stroke-width="1"></circle>
+<circle cx="160" cy="130" r="35" stroke="#222a3a" stroke-dasharray="3 3" stroke-width="1"></circle>
+<!-- 6 Radial Axis Lines -->
+<!-- 1: Top (MW), 2: Top-Right (LogP), 3: Bot-Right (H-Acceptors), 4: Bot (tPSA), 5: Bot-Left (Rotatable), 6: Top-Left (H-Donors) -->
+<line stroke="#2c3545" stroke-width="1.2" x1="160" x2="160" y1="130" y2="30"></line>
+<line stroke="#2c3545" stroke-width="1.2" x1="160" x2="246" y1="130" y2="80"></line>
+<line stroke="#2c3545" stroke-width="1.2" x1="160" x2="246" y1="130" y2="180"></line>
+<line stroke="#2c3545" stroke-width="1.2" x1="160" x2="160" y1="130" y2="230"></line>
+<line stroke="#2c3545" stroke-width="1.2" x1="160" x2="74" y1="130" y2="180"></line>
+<line stroke="#2c3545" stroke-width="1.2" x1="160" x2="74" y1="130" y2="80"></line>
+<!-- Historical Clinical Benchmark Polygon (Secondary) -->
+<polygon fill="#7df4ff" fill-opacity="0.08" points="160,55 225,95 210,165 160,195 95,160 100,95" stroke="#3b4b3d" stroke-dasharray="2 2" stroke-width="1.2"></polygon>
+<!-- Lead AETH-408 Polygon (Optimal Bioluminescent Accent) -->
+<polygon fill="#00ff87" fill-opacity="0.22" points="160,42 238,88 232,172 160,215 82,170 85,86" stroke="#00ff87" stroke-width="2"></polygon>
+<!-- Point Markers for Lead -->
+<circle cx="160" cy="42" fill="#00ff87" r="3.5"></circle>
+<circle cx="238" cy="88" fill="#00ff87" r="3.5"></circle>
+<circle cx="232" cy="172" fill="#00ff87" r="3.5"></circle>
+<circle cx="160" cy="215" fill="#00ff87" r="3.5"></circle>
+<circle cx="82" cy="170" fill="#00ff87" r="3.5"></circle>
+<circle cx="85" cy="86" fill="#00ff87" r="3.5"></circle>
+<!-- Axis Labels -->
+<text fill="#dae2f8" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="160" y="20">MW (&lt;500 Da)</text>
+<text fill="#dae2f8" font-family="JetBrains Mono" font-size="9" text-anchor="start" x="255" y="78">LogP (2.3)</text>
+<text fill="#dae2f8" font-family="JetBrains Mono" font-size="9" text-anchor="start" x="255" y="185">H-Accept (4)</text>
+<text fill="#dae2f8" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="160" y="246">tPSA (78 Å²)</text>
+<text fill="#dae2f8" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="65" y="185">Rot-Bonds (5)</text>
+<text fill="#dae2f8" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="65" y="78">H-Donors (2)</text>
+</svg>
+</div>
+<div class="mt-2 flex items-center justify-center gap-6 font-label-sm text-label-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-1.5 rounded-full bg-primary-container"></span>
+<span class="text-on-surface">Lead AETH-408</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-1.5 rounded-full bg-outline-variant"></span>
+<span class="text-on-surface-variant">Clinical Benchmark</span>
+</div>
+</div>
+<!-- Parameter Score Strip -->
+<div class="mt-4 grid grid-cols-2 gap-2 text-label-md font-label-md">
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30 flex justify-between items-center">
+<span class="text-on-surface-variant">Oral Bioavail.:</span>
+<span class="text-primary-container font-bold">86.4%</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30 flex justify-between items-center">
+<span class="text-on-surface-variant">BBB Permeability:</span>
+<span class="text-secondary-fixed font-bold">Moderate / Low</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30 flex justify-between items-center">
+<span class="text-on-surface-variant">hERG Cardiotox:</span>
+<span class="text-primary-container font-bold">Zero Risk</span>
+</div>
+<div class="p-2.5 rounded bg-surface-container border border-outline-variant/30 flex justify-between items-center">
+<span class="text-on-surface-variant">CYP3A4 Clearance:</span>
+<span class="text-primary-container font-bold">T1/2 = 18.4 hrs</span>
+</div>
+</div>
+</div>
+<!-- 4. 1-PERSON UNICORN FINANCIAL SLIDER MODEL -->
+<div class="rounded-xl bg-surface-container-low/85 backdrop-blur-2xl border border-outline-variant/40 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] relative">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-3 mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="query_stats">query_stats</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">Founder Economics • 1-Person Biotech Model</h2>
+</div>
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-primary-container/10 text-primary-container border border-primary-container/30">92.5% Equity</span>
+</div>
+<div class="space-y-4">
+<!-- Burn Rate Comparative Bar -->
+<div class="p-3 rounded bg-surface-container border border-outline-variant/30">
+<div class="flex justify-between items-center text-label-md font-label-md mb-2">
+<span class="text-on-surface-variant">Monthly Compute vs Traditional Lab Burn:</span>
+<span class="text-primary-container font-bold">$12k/mo vs $850k/mo</span>
+</div>
+<div class="space-y-1.5">
+<div>
+<div class="flex justify-between text-label-sm text-on-surface-variant mb-1">
+<span>Aethelgard AI Stack (1 Solo PI + Cloud Wet-labs)</span>
+<span class="text-primary-container font-bold">$12,000</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[2%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-sm text-on-surface-variant mb-1">
+<span>Traditional 45-person Biotech Team (Salary + Real Estate)</span>
+<span class="text-outline">$850,000</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-outline h-full w-[95%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Valuation Slider -->
+<div class="p-3 rounded bg-surface-container border border-outline-variant/30 space-y-2">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface-variant">IND Phase I Out-Licensing Target:</span>
+<span class="text-secondary-fixed font-bold font-data-display text-headline-sm" id="sliderVal">$184,000,000</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary-container" id="valRange" max="500" min="50" step="5" type="range" value="184"/>
+<div class="flex justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span>$50M (Hit-to-Lead)</span>
+<span>$250M</span>
+<span>$500M (Clinical Ready IND)</span>
+</div>
+</div>
+<!-- Projected Founder Return Cards -->
+<div class="grid grid-cols-2 gap-3 font-label-md text-label-md">
+<div class="p-3 rounded bg-surface-container-high/60 border border-outline-variant/40">
+<div class="text-on-surface-variant text-label-sm">Solo Founder Exit Share</div>
+<div class="text-primary font-headline-md font-bold text-headline-md mt-1" id="founderNet">$170.2M</div>
+<div class="text-label-sm text-primary-container font-medium mt-0.5">92.5% Non-Diluted</div>
+</div>
+<div class="p-3 rounded bg-surface-container-high/60 border border-outline-variant/40">
+<div class="text-on-surface-variant text-label-sm">Projected Royalty Stream</div>
+<div class="text-secondary-fixed font-headline-md font-bold text-headline-md mt-1" id="royaltyNet">$26.6M/yr</div>
+<div class="text-label-sm text-secondary-container font-medium mt-0.5">14.5% Commercial Net</div>
+</div>
+</div>
+<button class="w-full py-2 rounded bg-surface-container-high hover:bg-surface-container-highest border border-secondary-container/30 text-secondary-fixed font-headline-sm text-body-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="description">description</span>
+<span>Export IND Dossier &amp; Term Sheet Model</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. ACTIVE PIPELINE MATRIX TABLE (FULL-WIDTH GLASS PANEL) -->
+<section class="rounded-xl bg-surface-container-low/85 backdrop-blur-2xl border border-outline-variant/40 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4 border-b border-outline-variant/30 pb-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container" data-icon="table_chart">table_chart</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">Active In-Silico Pipeline Matrix</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Live autonomous screening queue across AlphaFold 3, RFdiffusion, and cloud robotic assays.</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<input class="bg-surface-container-lowest border border-outline-variant/50 rounded px-3 py-1.5 text-body-sm font-data-display text-on-surface focus:border-secondary-container focus:outline-none w-64 placeholder:text-outline" placeholder="Search compounds, pathways..." type="text"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-on-surface-variant text-sm" data-icon="search">search</span>
+</div>
+<button class="px-3 py-1.5 rounded bg-primary-container text-surface-container-lowest font-headline-sm text-body-sm font-bold shadow-[0_0_12px_rgba(0,255,135,0.4)]">
+            + Screen De Novo Target
+          </button>
+</div>
+</div>
+<!-- High-Density Responsive Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/40 text-on-surface-variant font-label-md text-label-md">
+<th class="py-3 px-3">Compound ID</th>
+<th class="py-3 px-3">Target Pathway</th>
+<th class="py-3 px-3">Indication</th>
+<th class="py-3 px-3">In-Silico Stage</th>
+<th class="py-3 px-3">Binding Affinity (Kd)</th>
+<th class="py-3 px-3">Toxicity Screen</th>
+<th class="py-3 px-3">Readiness</th>
+<th class="py-3 px-3 text-right">Autonomous Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20 font-label-md text-label-md">
+<!-- Row 1: AETH-408 -->
+<tr class="hover:bg-surface-container/60 transition-colors group">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-data-display font-bold text-primary">AETH-408</span>
+</div>
+</td>
+<td class="py-3.5 px-3 font-semibold text-secondary-fixed">FOXO4-p53 Interrupter</td>
+<td class="py-3.5 px-3 text-on-surface-variant">Senescence Clearance / Fibrosis</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-primary-container/15 text-primary-container border border-primary-container/30 text-label-sm font-label-sm">
+                  Target Confirmed (AF3)
+                </span>
+</td>
+<td class="py-3.5 px-3 font-bold text-primary-container">0.42 nM</td>
+<td class="py-3.5 px-3">
+<span class="text-primary-container">Clean</span> <span class="text-on-surface-variant text-label-sm">(0 hERG risk)</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-secondary-container/10 text-secondary-container border border-secondary-container/30 text-label-sm font-label-sm">
+                  Ready for In-Vivo
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-3 py-1 rounded bg-primary-container text-surface-container-lowest font-headline-sm text-body-sm font-bold hover:shadow-[0_0_12px_rgba(0,255,135,0.6)] transition-all">
+                  Execute Cloud Synthesis
+                </button>
+</td>
+</tr>
+<!-- Row 2: AETH-712 -->
+<tr class="hover:bg-surface-container/60 transition-colors group">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-data-display font-bold text-primary">AETH-712</span>
+</div>
+</td>
+<td class="py-3.5 px-3 font-semibold text-secondary-fixed">SASP MMP-3/IL-6 Dual Inhibitor</td>
+<td class="py-3.5 px-3 text-on-surface-variant">Inflammaging / Osteoarthritis</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-secondary-container/15 text-secondary-container border border-secondary-container/30 text-label-sm font-label-sm">
+                  Lead Optimization
+                </span>
+</td>
+<td class="py-3.5 px-3 font-bold text-secondary-fixed">1.80 nM</td>
+<td class="py-3.5 px-3">
+<span class="text-primary-container">98% Bioavailable</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-tertiary-fixed border border-outline-variant/40 text-label-sm font-label-sm">
+                  Lead Series B
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-3 py-1 rounded border border-secondary-container text-secondary-container hover:bg-secondary-container/10 font-headline-sm text-body-sm transition-all">
+                  Simulate Refold
+                </button>
+</td>
+</tr>
+<!-- Row 3: AETH-205 -->
+<tr class="hover:bg-surface-container/60 transition-colors group">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed"></span>
+<span class="font-data-display font-bold text-primary">AETH-205</span>
+</div>
+</td>
+<td class="py-3.5 px-3 font-semibold text-secondary-fixed">Sirtuin-6 Allosteric Agonist</td>
+<td class="py-3.5 px-3 text-on-surface-variant">Genomic Stability / Epigenetic Reset</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/40 text-label-sm font-label-sm">
+                  Hit-to-Lead
+                </span>
+</td>
+<td class="py-3.5 px-3 font-bold text-primary">12.1 nM</td>
+<td class="py-3.5 px-3">
+<span class="text-primary">Low CYP Inhibition</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-primary-container/10 text-primary-container border border-primary-container/30 text-label-sm font-label-sm">
+                  Pre-IND Packaged
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<button class="px-3 py-1 rounded border border-outline-variant hover:border-secondary-container text-on-surface hover:text-secondary-fixed font-headline-sm text-body-sm transition-all">
+                  Analyze Docking
+                </button>
+</td>
+</tr>
+<!-- Row 4: AETH-901 -->
+<tr class="hover:bg-surface-container/60 transition-colors group">
+<td class="py-3.5 px-3">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-data-display font-bold text-primary">AETH-901</span>
+</div>
+</td>
+<td class="py-3.5 px-3 font-semibold text-secondary-fixed">NAD+ Salvage Rate Enhancer (NNMT)</td>
+<td class="py-3.5 px-3 text-on-surface-variant">Metabolic Lifespan Extension</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-outline border border-outline-variant/30 text-label-sm font-label-sm">
+                  De Novo Screening
+                </span>
+</td>
+<td class="py-3.5 px-3 font-bold text-primary">4.60 nM</td>
+<td class="py-3.5 px-3">
+<span class="text-on-surface-variant">Non-toxic In-Silico</span>
+</td>
+<td class="py-3.5 px-3">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant border border-outline-variant/30 text-label-sm font-label-sm">
+                  Computational Screen
+                </span>
+</td>
+<td class="py-3.5 px-3 text-right">
+<span class="px-3 py-1 rounded bg-surface-container text-outline font-headline-sm text-body-sm">
+                  Queued (Position #2)
+                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- FOOTER STATUS STRIP -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-12 py-4 px-6 font-label-sm text-label-sm text-on-surface-variant">
+<div class="max-w-[1720px] mx-auto flex flex-wrap justify-between items-center gap-4">
+<div class="flex items-center gap-4">
+<span>Aethelgard Longevity Engine • v4.2.0-Prod</span>
+<span>•</span>
+<span class="text-primary-container">Quantum Annealer Bridge Connected</span>
+<span>•</span>
+<span>Cryptographic Audit Proof: 0x82f...d49c</span>
+</div>
+<div>
+<span>Autonomous 1-Person Virtual Lab Platform — Zero Wet-Lab Overhead</span>
+</div>
+</div>
+</footer>
+<!-- SIMPLE INLINE JS FOR INTERACTIVE SLIDER LOGIC -->
+<script>
+    const slider = document.getElementById('valRange');
+    const valDisplay = document.getElementById('sliderVal');
+    const founderNet = document.getElementById('founderNet');
+    const royaltyNet = document.getElementById('royaltyNet');
+
+    if (slider && valDisplay && founderNet && royaltyNet) {
+      slider.addEventListener('input', function() {
+        const val = parseFloat(this.value);
+        valDisplay.textContent = '$' + val.toLocaleString() + ',000,000';
+        
+        // 92.5% equity
+        const net = (val * 0.925).toFixed(1);
+        founderNet.textContent = '$' + net + 'M';
+
+        // 14.5% annual royalty on projected $180M commercial turnover base
+        const royalty = ((val * 0.145)).toFixed(1);
+        royaltyNet.textContent = '$' + royalty + 'M/yr';
+      });
+    }
+  </script>
+</body></html>
